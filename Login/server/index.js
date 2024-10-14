@@ -6,14 +6,20 @@ const userModel = require('./models/users');
 const app = express();
 const port = 3000;
 app.use(express.json());
-app.use(cors());
+app.use(cors((
+  {
+    origin:["http://courserecomghrcemn.app/"],
+    methods:["POST","GET"],
+    credentials: true
+  }));
 
 // Connect to MongoDB
-mongoose.connect('mongodb://127.0.0.1:27017/recom', { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('Failed to connect to MongoDB', err));
-
+mongoose.connect('mongodb+srv://avinashmadnani05:avinash@cluster0.p0wo2.mongodb.net/recom?retryWrites=true&w=majority&appName=Cluster0
+});
 // Define routes
+app.get('/test', (req, res) => {
+  res.send('Hello, World!');
+})
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
   userdataModel.findOne({ email: email })
