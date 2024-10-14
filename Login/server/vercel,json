@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "MinorProject/Login/server/index.js",  // Adjust this to your main backend file
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "./models/(.*)",  // API routes
+      "dest": "server/app.js"
+    }
+  ]
+}
